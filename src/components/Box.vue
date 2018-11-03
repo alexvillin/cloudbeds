@@ -1,7 +1,13 @@
+<!--
+    Box component
+    Options: 
+        index: unique id
+-->
+
 <template>
     <div class="box" :index="index" :key="index">
         <input type="checkbox" v-model.lazy="checked"/>
-        <input type="number" v-model.number="number" :disabled="checked"/>
+        <input type="number" v-model="number" :disabled="checked" @input="filter"/>
         <button v-show="checked" @click="save">Save</button>
     </div>
 </template>
@@ -23,6 +29,9 @@
         methods:{
             save(){
                 console.log("Index: "+ this.index + " Value: " + this.number);
+            },
+            filter($e){
+                $e.target.value = this.number.replace('/\D/g', '');
             }
         }
     }
@@ -39,6 +48,7 @@
         position: relative;
         background-color: #C5CAE9;
         padding: 5px;
+/*
 
         &:after {
             content: attr(index);
@@ -50,6 +60,7 @@
             color: white;
             background-color: grey;
         }
+*/
     }
 
 </style>

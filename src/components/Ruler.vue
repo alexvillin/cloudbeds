@@ -1,14 +1,17 @@
+<!-- 
+  Rulers component
+      Options: 
+      position: ['top', 'left']
+      step: in pixels ruler step
+      amount: amount of blocks in parent scope
+ -->
+ 
 <template>
     <div :class="'ruler-' + position">
         <div class="stack" ref="stack">
             <div class="index" v-for="(i, index) in items" :index="index" :key="position + index"></div>
         </div>
     </div>
-    <!--
-    <div class="w" step="100" offset="" amount="" position="left">
-        <div class="index" v-for="(r, index) in rows" :index="index" ></div>
-    </div>
--->
 </template>
 <script>
     import Helper from '@/helper'
@@ -45,12 +48,12 @@
         updated: function() {
             let items = this.$el.querySelectorAll('.index');
             if (this.isTop) {
-                [...items].forEach((i) => {
+                Array.from(items).forEach((i) => {
                     i.style['min-width'] = this.step + 'px';
                 })
             }
             if (this.isLeft) {
-                [...items].forEach((i) => {
+                Array.from(items).forEach((i) => {
                     i.style['min-height'] = this.step + 'px';
                 })
             }
@@ -83,7 +86,6 @@
         position: absolute;
         display: block;
     }
-
 
     .ruler {
         &-top {

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 
 const Helper = {
+    isLoadBeforehand: false,
+    shiftOffset: 100,
     getWindowHeight() {
         return document.documentElement.clientHeight
     },
@@ -14,7 +16,7 @@ const Helper = {
         return el.clientWidth;
     },
     getScrollOffsetHeight() {
-        return window.pageYOffset || document.documentElement.scrollTop
+        return window.pageYOffset || document.documentElement.scrollTop; 
     },
     getScrollOffsetWidth() {
         return window.pageXOffset || document.documentElement.scrollLeft
@@ -49,26 +51,30 @@ const Helper = {
     },
     isElementBottomVisible(el) {
         let clientWindowHeight = this.getWindowHeight();
-        let scrollOffset = this.getScrollOffsetHeight();
+        let scrollOffset = this.shift(this.getScrollOffsetHeight());
         if (clientWindowHeight + scrollOffset >= el.offsetTop + el.offsetHeight) {
             return true;
         }
     },
     isElementTopVisible(el) {
         let clientWindowHeight = this.getWindowHeight();
-        let scrollOffset = this.getScrollOffsetHeight();
+        let scrollOffset = this.shift(this.getScrollOffsetHeight());
         if (clientWindowHeight + scrollOffset >= el.offsetTop) {
             return true;
         }
     },
     isElementRightVisible(el) {
         let clientWindowWidth = this.getWindowWidth();
-        let scrollOffset = this.getScrollOffsetWidth();
-        console.log(el.offsetLeft, el.offsetWidth);
+        let scrollOffset = this.shift(this.getScrollOffsetWidth())
         if (clientWindowWidth + scrollOffset >= el.offsetLeft + el.offsetWidth) {
             return true;
         }
     },
+    shift(val){
+        return this.isLoadBeforehand
+            ? val + this.shiftOffset
+            : val;
+    }
 }
 
 export default Helper;
