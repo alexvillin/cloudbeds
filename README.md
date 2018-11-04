@@ -1,31 +1,31 @@
 # cloudbeds
 
-## Project setup
+### Watch here https://alexvillin.github.io/cloudbeds/#/
+
+Main Components:
+- Box
+```html
+  <Box :index="i"/>
 ```
+```
+  Props: 
+    index: Number // unique box id
+```
+- Ruler
+```html
+   <Ruler :amount="counter" position="top" step="100" />
+```
+```
+  Props: 
+      position: String //['top', 'left']
+      step: Number // in pixels ruler step (optionsl)
+      amount: Number //amount of blocks in parent scope
+ ```
+ ### Project setup
+ 
+ ```
+ git clone https://github.com/alexvillin/Vue-tables-stress-test.git
+cd ./Vue-tables-stress-test
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
+ ```
