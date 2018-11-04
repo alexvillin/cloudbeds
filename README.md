@@ -24,8 +24,8 @@ Main Components:
  ### Project setup
  
  ```
- git clone https://github.com/alexvillin/Vue-tables-stress-test.git
-cd ./Vue-tables-stress-test
+ git clone https://github.com/alexvillin/cloudbeds.git
+cd ./cloudbeds
 npm install
 npm run serve
  ```
